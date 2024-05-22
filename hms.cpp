@@ -1,8 +1,7 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
+#include <stdlib.h>
 
-// Define the patient structure
 typedef struct Patient {
     int id;
     char name[100];
@@ -11,7 +10,6 @@ typedef struct Patient {
     struct Patient* next;
 } Patient;
 
-// Define the bed structure
 typedef struct Bed {
     int bed_id;
     int is_allocated;
@@ -19,7 +17,6 @@ typedef struct Bed {
     struct Bed* next;
 } Bed;
 
-// Define the logbook structure
 typedef struct LogBook {
     int patient_id;
     char test[100];
@@ -27,7 +24,6 @@ typedef struct LogBook {
     struct LogBook* next;
 } LogBook;
 
-// Define the bill structure
 typedef struct Bill {
     int patient_id;
     int days;
@@ -36,28 +32,23 @@ typedef struct Bill {
     struct Bill* next;
 } Bill;
 
-// Head pointers for linked lists
 Patient* patientHead = NULL;
 Bed* bedHead = NULL;
 LogBook* logHead = NULL;
 Bill* billHead = NULL;
+int bed_count = 10;
 
-int bed_count = 10; // Assume 10 beds for simplicity
-
-// Function prototypes
-void addPatient();
-void updatePatient();
-void allocateBed();
-void addLog();
-void searchPatient();
-void generateDischargeSummary();
-void calculateBill();
-void printMenu();
+void add_patient();
+void update_patient();
+void allocate_bed();
+void add_log();
+void find_patient();
+void discharge_summary();
+void total_bill();
+void all_menu();
 
 int main() {
     int choice;
-
-    // Initialize beds
     for (int i = 1; i <= bed_count; i++) {
         Bed* newBed = (Bed*)malloc(sizeof(Bed));
         newBed->bed_id = i;
@@ -66,31 +57,30 @@ int main() {
         newBed->next = bedHead;
         bedHead = newBed;
     }
-
     while (1) {
-        printMenu();
+        all_menu();
         scanf("%d", &choice);
         switch (choice) {
             case 1:
-                addPatient();
+                add_patient();
                 break;
             case 2:
-                searchPatient();
+                find_patient();
                 break;
             case 3:
-                updatePatient();
+                update_patient();
                 break;
             case 4:
-                allocateBed();
+                allocate_bed();
                 break;
             case 5:
-                addLog();
+                add_log();
                 break;
             case 6:
-                generateDischargeSummary();
+                discharge_summary();
                 break;
             case 7:
-                calculateBill();
+                total_bill();
                 break;
             case 8:
                 exit(0);
@@ -102,20 +92,20 @@ int main() {
     return 0;
 }
 
-void printMenu() {
+void all_menu() {
     printf("\nHospital Management System\n");
-    printf("1. Add Patient Details\n");
-    printf("2. Search Patient Information\n");
-    printf("3. Update Patient Information\n");
-    printf("4. Allocate Bed\n");
-    printf("5. Maintain Log Book for Tests and Medicine\n");
-    printf("6. Generate Discharge Summary\n");
-    printf("7. Create Bill\n");
+    printf("1. Add The Patient Information:\n");
+    printf("2. Search Patient Details:\n");
+    printf("3. Update Patient Details:\n");
+    printf("4. Allocate A Bed:\n");
+    printf("5. Log Book for Tests and Medicine:\n");
+    printf("6. Generate Discharge Summary For Patient:\n");
+    printf("7. Create Bill:\n");
     printf("8. Exit\n");
     printf("Enter your choice: ");
 }
 
-void addPatient() {
+void add_patient() {
     Patient* newPatient = (Patient*)malloc(sizeof(Patient));
     printf("Enter Patient ID: ");
     scanf("%d", &newPatient->id);
@@ -130,7 +120,7 @@ void addPatient() {
     printf("Patient added successfully!\n");
 }
 
-void updatePatient() {
+void update_patient() {
     int id;
     printf("Enter Patient ID to update: ");
     scanf("%d", &id);
@@ -151,7 +141,7 @@ void updatePatient() {
     printf("Patient not found!\n");
 }
 
-void allocateBed() {
+void allocate_bed() {
     int patient_id;
     printf("Enter Patient ID to allocate bed: ");
     scanf("%d", &patient_id);
@@ -183,7 +173,7 @@ void allocateBed() {
     printf("No beds available!\n");
 }
 
-void addLog() {
+void add_log() {
     LogBook* newLog = (LogBook*)malloc(sizeof(LogBook));
     printf("Enter Patient ID: ");
     scanf("%d", &newLog->patient_id);
@@ -196,7 +186,7 @@ void addLog() {
     printf("Log added successfully!\n");
 }
 
-void searchPatient() {
+void find_patient() {
     int id;
     printf("Enter Patient ID to search: ");
     scanf("%d", &id);
@@ -223,7 +213,7 @@ void searchPatient() {
     printf("Patient not found!\n");
 }
 
-void generateDischargeSummary() {
+void discharge_summary() {
     int patient_id;
     printf("Enter Patient ID to generate discharge summary: ");
     scanf("%d", &patient_id);
@@ -243,7 +233,7 @@ void generateDischargeSummary() {
     printf("Patient not found!\n");
 }
 
-void calculateBill() {
+void total_bill() {
     int patient_id, days;
     float daily_rate;
     printf("Enter Patient ID: ");
