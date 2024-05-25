@@ -7,7 +7,6 @@
 5. Maintained a log book for different tests and medicine
 6. Generate a discharge summary at the time of discharge.
 7. Create a biller module to calculate daily bills.
-8. Constraints:
-  1. Total number of beds are limited.
+8. Constraints: Total number of beds are limited.
 Now, the hospital management system should be designed with the appropriate data structure
 so that someone can use this system to maintain the hospital database.
