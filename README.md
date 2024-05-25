@@ -11,4 +11,3 @@
   Now, the hospital management system should be designed with the appropriate data structure
   so that someone can use this system to maintain the hospital database.
 
-Ref:- https://cboard.cprogramming.com/c-programming/175395-how-implement-room-booking-system-part-circular-queue.html
