@@ -192,7 +192,6 @@ void find_patient() {
     scanf("%d", &id);
     Patient* temp = patientHead;
     LogBook* temp1 = logHead;
-    //Bed* temp2 = bedHead;
     while (temp != NULL) {
         if (temp->id == id) {
             printf("Patient ID: %d\n", temp->id);
@@ -203,9 +202,6 @@ void find_patient() {
                 printf("Test: %s\n", temp1->test);
                 printf("Medicine: %s\n", temp1->medicine);
             }
-            /*if(temp2 != NULL){
-                printf("Bed No %d is allocated to patient\n", temp2->bed_id);
-            }*/
             return;
         }
         temp = temp->next;
